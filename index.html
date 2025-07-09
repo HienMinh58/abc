@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Xin lỗi em nhé ❤️</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      margin-top: 100px;
+      background-color: #ffeef0;
+    }
+
+    h1 {
+      color: #e74c3c;
+    }
+
+    #container {
+      margin-top: 50px;
+    }
+
+    button {
+      padding: 15px 30px;
+      margin: 20px;
+      font-size: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #acceptBtn {
+      background-color: #2ecc71;
+      color: white;
+    }
+
+    #apologizeBtn {
+      background-color: #3498db;
+      color: white;
+    }
+
+    #messageBox {
+      margin-top: 30px;
+      font-size: 24px;
+      color: #c0392b;
+      min-height: 50px;
+      font-weight: bold;
+      padding: 10px;
+    }
+
+    #loveText {
+      margin-top: 50px;
+      font-size: 36px;
+      color: #e84393;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    #loveText.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Em ơi, anh xin lỗi 😢</h1>
+  <p>Cho anh một cơ hội sửa sai nhé...</p>
+
+  <div id="container">
+    <button id="acceptBtn">Dạ 💖</button>
+    <button id="apologizeBtn">Hong chịu</button>
+  </div>
+
+  <div id="messageBox"></div>
+
+  <!-- Nơi hiện "Em yêu anh ❤️" -->
+  <div id="loveText">Anh yêu em ❤️</div>
+
+  <script>
+    const acceptBtn = document.getElementById("acceptBtn");
+    const apologizeBtn = document.getElementById("apologizeBtn");
+    const messageBox = document.getElementById("messageBox");
+    const loveText = document.getElementById("loveText");
+    const container = document.getElementById("container");
+
+    let scale = 1;
+
+    const messages = [
+      "Anh sai rồi, cho anh sửa sai nhé 😔",
+      "Em cười lên đi, em cười là anh tan chảy rồi 🥹",
+      "Không có em, anh như cái điện thoại hết pin 🔋",
+      "Em là cả bầu trời của anh đó 🌈",
+      "Tha lỗi cho anh đi, rồi anh rủ em đi ăn kem 🍦",
+      "Nếu xin lỗi có thể ôm em một cái thì anh xin cả ngàn lần 🤗",
+      "Em giận nhìn cũng cute thật, nhưng anh vẫn muốn em cười hơn 😢",
+      "Cho anh cơ hội làm người yêu ngoan của em nhé 🥺💘"
+    ];
+
+    let messageIndex = 0;
+
+    apologizeBtn.addEventListener("click", () => {
+      // Tăng size nút "Đồng ý"
+      scale += 0.1;
+      acceptBtn.style.transform = `scale(${scale})`;
+
+      // Hiện câu dỗ
+      messageBox.textContent = messages[messageIndex];
+
+      // Tăng chỉ số câu
+      messageIndex = (messageIndex + 1) % messages.length;
+    });
+
+    acceptBtn.addEventListener("click", () => {
+      // Ẩn cả 2 nút
+      container.style.display = "none";
+
+      // Hiện dòng "Em yêu anh ❤️"
+      loveText.classList.add("show");
+
+      // Ẩn luôn messageBox nếu muốn
+      messageBox.textContent = "";
+    });
+  </script>
+
+</body>
+</html>
